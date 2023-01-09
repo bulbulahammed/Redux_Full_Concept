@@ -18,6 +18,8 @@ const Navbar = () => {
                         <ul className="p-2 bg-primary text-white">
                             <li><Link to="/useState">UseState</Link></li>
                             <li><Link to="/parentToChild">PtoChild</Link></li>
+                            <li><Link to="/longForm">Long Form</Link></li>
+                            <li><Link to="/shortForm">Short Form</Link></li>
                         </ul>
                     </li>
                     <li tabIndex={0}>
@@ -43,6 +45,8 @@ const Navbar = () => {
                     <ul className="p-2 bg-primary text-white">
                         <li><Link to="/useState">useState</Link></li>
                         <li><Link to="/parentToChild">PtoChild</Link></li>
+                        <li><Link to="/longForm">Long Form</Link></li>
+                            <li><Link to="/shortForm">Short Form</Link></li>
                     </ul>
                 </li>
                 <li tabIndex={0}>
