@@ -1,71 +1,203 @@
-# Getting Started with Create React App
+# This may help to understand fundamental of Redux
+## We need to know about this topics before Learn Redux
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+- State Management
+- Global State Management
+- Context
+- useReducer
 
-In the project directory, you can run:
+## You may find more about Redux in other Repository in my Profile.
 
-### `npm start`
+ After This Repository You can follow another Repository called Redux
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# To Start Your local Machine.
+- Clone This Repository
+- Install npm using "npm i or npm install" command
+- 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+# Redux
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## What is Redux?
+ 
+Redux is a predictable state container for Javascript. You use it in any javascript framework or in vanilla javascript.
 
-### `npm run build`
+Predictable: Redux helps you write applications that behave consistently, run in different environments (client, server, and native), and are easy to test.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Centralized: Centralizing your application's state and logic enables powerful capabilities like undo/redo, state persistence, and much more.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Debuggable: The Redux DevTools make it easy to trace when, where, why, and how your application's state changed. Redux's architecture lets you log changes, use "time-travel debugging", and even send complete error reports to a server.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Flexible: Redux works with any UI layer, and has a large ecosystem of addons to fit your needs
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Simple Data flow in state management–
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# Redux_Full_Concept
+
+
+
+
+
+
+
+
+Data Flow in old way of  Redux Way – External Data handle with Redux thunk middleware.
+
+
+
+
+
+
+
+
+
+       Redux-ReduxToolkit Tutorial
+
+video playlist link here: https://youtube.com/playlist?list=PLgH5QX0i9K3pe7Z7ATcyLdUW3grE4Vfld
+
+## 1. Introduction to Redux
+
+## 1.1 What is Redux & why Redux?
+A small JS Library
+for managing medium/large amount of states globally in your app.
+useContext + useReducer Hook ideas will help you to understand redux.
+## 1.2 Some common terms related to redux
+
+
+## 1.3 how redux works?
+
+
+2. redux core concept
+3. Complete Counter App
+4. payload in action
+5. Multiple reducers & combine multiple reducers
+6. Middleware
+7. API Calling - async actions using redux-thunk
+8. React-redux counter example
+9. API calling in react-redux
+
+
+
+
+## 10. redux-toolkit counter app
+
+step1: install packages -> npm install @reduxjs/toolkit react-redux
+step2: create a recommended folder structure for redux-toolkit - features (contains individual feature of our app) - app (contains store of our app)
+step3: create slice. collection of logic for a feature is called slices in redux. - src/features/counter/counterSlice ```js import { createSlice } from "@reduxjs/toolkit";
+   // state: count:0
+   // increment, decrement, reset
+
+   // const incrementCounter = () => {
+   //   return { type: "INCREMENT" };
+   // };
+
+   export const counterSlice = createSlice({
+     name: "counter",
+     initialState: { count: 0 },
+     reducers: {
+       increment: (state) => {
+         state.count = state.count + 1;
+       },
+       decrement: (state) => {
+         state.count = state.count - 1;
+       },
+       reset: (state) => {
+         state.count = 0;
+       },
+       increaseByAmount: (state, action) => {
+         state.count = state.count + action.payload;
+       },
+     },
+   });
+
+   // export reducer and action createor
+   // Action creators are generated for each case reducer function
+   export const { increment, decrement, reset, increaseByAmount } =
+     counterSlice.actions;
+
+   export default counterSlice.reducer;
+
+   ```
+step4: create store -> app/store.js ```js import { configureStore } from "@reduxjs/toolkit";
+     import counterReducer from "../features/counter/counterSlice";
+
+     const store = configureStore({
+       reducer: {
+         counter: counterReducer,
+       },
+     });
+     export default store;
+  ```
+step5: provide store in root file -> src/index.js ```js import React from 'react'; import ReactDOM from 'react-dom/client'; import './index.css'; import App from './App'; import reportWebVitals from './reportWebVitals'; import { Provider } from 'react-redux';
+     import store from './app/store';
+
+     const root = ReactDOM.createRoot(document.getElementById('root'));
+     root.render(
+       <Provider store={store}>
+         <App />
+       </Provider>
+     );
+
+  ```
+step6: use store & dispatch actions ```js import React from "react"; import { useDispatch, useSelector } from "react-redux"; import { decrement, increaseByAmount, increment, reset } from "./counterSlice";
+   const CounterView = () => {
+     const count = useSelector((state) => state.counter.count);
+
+     const dispatch = useDispatch();
+
+     return (
+       <div>
+         <h2>Counter: {count}</h2>
+         <button
+           onClick={() => {
+             dispatch(increment());
+           }}
+         >
+           Increment
+         </button>
+         <button
+           onClick={() => {
+             dispatch(reset());
+           }}
+         >
+           reset
+         </button>
+         <button
+           onClick={() => {
+             dispatch(decrement());
+           }}
+         >
+           Decrement
+         </button>
+         <button
+           onClick={() => {
+             dispatch(increaseByAmount(5));
+           }}
+         >
+           IncrementBy5
+         </button>
+       </div>
+     );
+   };
+
+export default CounterView;
+
+
