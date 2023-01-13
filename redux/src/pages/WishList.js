@@ -2,9 +2,9 @@ import React from "react";
 import ProductCard from './../components/ProductCard';
 import { useProducts } from './../contexts/ProductsProvider';
 
-const TopRated = () => {
+const WishList = () => {
   const {
-    state: {products,loading,error},
+    state: {wishList,loading,error},
   } = useProducts();
   
   let content;
@@ -15,11 +15,11 @@ const TopRated = () => {
   if(error){
     content = <p>Something went wrong!</p>
   }
-  if(!loading && !error && products.length === 0){
+  if(!loading && !error && wishList.length === 0){
     content = <p>Nothing to show</p>
   }
-  if(!loading && !error && products.length){
-    content = products.filter(product => product.rating >= 4).map(product =><ProductCard key={product._id} product={product}/>)
+  if(!loading && !error && wishList.length){
+    content = wishList.map(product =><ProductCard key={product._id} product={product}/>)
   }
   
   
@@ -30,4 +30,4 @@ const TopRated = () => {
     );
   };
 
-export default TopRated;
+export default WishList;

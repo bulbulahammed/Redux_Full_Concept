@@ -1,7 +1,6 @@
 import { RouterProvider } from "react-router-dom";
-import ProductsProvider from "./contexts/productsProvider";
+import ProductsProvider from "./contexts/ProductsProvider";
 import routes from "./routes/routes";
-
 
 
 function App() {
