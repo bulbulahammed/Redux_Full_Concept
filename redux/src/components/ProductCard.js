@@ -20,7 +20,7 @@ const {dispatch} = useProducts();
       <div className=' flex-1'>
         <ul className='space-y-2'>
           {product.keyFeature.map((feature) => {
-            return <li className='text-sm '>{feature}</li>;
+            return <li key={feature} className='text-sm '>{feature}</li>;
           })}
         </ul>
       </div>
@@ -28,6 +28,10 @@ const {dispatch} = useProducts();
         <button 
           onClick={()=>dispatch({type:actionTypes.ADD_TO_CART, payload:product})} className='bg-indigo-500 rounded-full py-1 px-2 flex-1 text-white text-bold'>
           Add to cart
+        </button>
+        <button 
+          onClick={()=>dispatch({type:actionTypes.REMOVE_FROM_CART, payload:product})} className='bg-indigo-500 rounded-full py-1 px-2 flex-1 text-white text-bold'>
+          Remove
         </button>
         <button
           title='Add to wishlist'
