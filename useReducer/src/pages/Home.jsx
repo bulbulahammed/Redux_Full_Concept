@@ -5,9 +5,9 @@ const Home = () => {
     
     const reducer =(state,action)=>{
         if(action.type === "INCREMENT"){
-            return state + 1;
+            return state + action.payload;
         }else if(action.type === "DECREMENT"){
-            return state -1;
+            return state - action.payload;
         }
     }
     const [state,dispatch] = useReducer(reducer,initialState);
@@ -18,8 +18,8 @@ const Home = () => {
             <div className="card-body items-center text-center">
                 <h2 className='font-bold text-6xl mb-20'>{state}</h2>
                 <div className="card-actions">
-                    <button onClick={()=>dispatch({type:"DECREMENT"})} className="btn btn-active btn-secondary">Decrement</button>
-                    <button onClick={()=>dispatch({type:"INCREMENT"})} className="btn btn-active btn-primary">Increment</button>
+                    <button onClick={()=>dispatch({type:"DECREMENT",payload:10})} className="btn btn-active btn-secondary">Decrement</button>
+                    <button onClick={()=>dispatch({type:"INCREMENT",payload:10})} className="btn btn-active btn-primary">Increment</button>
                 </div>
             </div>
         </div>
