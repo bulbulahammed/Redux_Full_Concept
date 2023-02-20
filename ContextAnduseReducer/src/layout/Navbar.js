@@ -1,7 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { BsFillCartFill } from "react-icons/bs";
 import { IoIosListBox } from "react-icons/io";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -18,7 +18,7 @@ const Navbar = () => {
           <Link to='/about'>About</Link>
         </li>
         <li title='Wishlist' className='bg-indigo-500 p-2 rounded-full'>
-          <Link to='/'>
+          <Link to='/wishList'>
             <IoIosListBox className='text-white' />
           </Link>
         </li>

@@ -1,7 +1,12 @@
 import React from "react";
 import { BiListPlus } from "react-icons/bi";
+import { BsFillCartPlusFill } from "react-icons/bs";
+import { MdDeleteForever } from "react-icons/md";
+import { useProducts } from './../context/ProductProvider';
+import { actionsTypes } from './../state/productState/actionTypes';
 
 const ProductCard = ({ product }) => {
+  const {dispatch} =useProducts();
   return (
     <div
       className='shadow-lg rounded-3xl border  p-3 flex flex-col text-indigo-900'
@@ -15,17 +20,29 @@ const ProductCard = ({ product }) => {
       <div className=' flex-1'>
         <ul className='space-y-2'>
           {product.keyFeature.map((feature) => {
-            return <li className='text-sm '>{feature}</li>;
+            return <li className='text-sm ' key={feature}>{feature}</li>;
           })}
         </ul>
       </div>
-      <div className='flex gap-2 mt-5'>
-        <button className='bg-indigo-500 rounded-full py-1 px-2 flex-1 text-white text-bold'>
-          Add to cart
+      <div className='flex gap-2 mt-5 justify-center'>
+        <button 
+          onClick={()=>dispatch({type: actionsTypes.ADD_TO_CART,payload:product})} 
+          className='bg-indigo-500  py-2 px-2 rounded-full text-white'
+          title="Add to Cart"
+          >
+            <BsFillCartPlusFill/>
         </button>
         <button
+           onClick={()=>dispatch({type: actionsTypes.REMOVE_FROM_CART,payload:product})}
+          title='Remove from wish list'
+          className='bg-indigo-500  py-2 px-2 rounded-full'
+        >
+          <MdDeleteForever className='text-white' />
+        </button>
+        <button
+           onClick={()=>dispatch({type: actionsTypes.ADD_TO_WISH_LIST,payload:product})}
           title='Add to wishlist'
-          className='bg-indigo-500  py-1 px-2 rounded-full'
+          className='bg-indigo-500  py-2 px-2 rounded-full'
         >
           <BiListPlus className='text-white' />
         </button>
